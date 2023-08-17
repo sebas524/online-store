@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { PageNotFound404Component } from './pages/page-not-found404/page-not-found404.component';
+import { MaterialModule } from '../material/material.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [NavbarComponent, PageNotFound404Component],
-  imports: [CommonModule],
-  exports: [NavbarComponent],
+  declarations: [PageNotFound404Component],
+  imports: [CommonModule, MaterialModule, RouterModule],
+  exports: [],
 })
 export class SharedModule {}

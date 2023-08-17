@@ -1,0 +1,23 @@
+<p>navbar works!</p>
+<mat-toolbar class="max-w-7*1 mx-auto border-x justify-between" color="primary">
+  <a routerLink="/shop/products">The Online Shop</a>
+
+  <!-- ! CART BTN -->
+  <!-- * in order to click on cart, and that a menu pops down, the mat-icon needs to be put inside a button that will allow for that functionality (matMenuTriggerFor):  -->
+  <button mat-icon-button [matMenuTriggerFor]="cartMenu">
+    <!-- * matBadge: allows for bubble to appear next to cart -->
+    <mat-icon [matBadge]="2" matBadgeColor="warn">shopping_cart</mat-icon>
+  </button>
+  <!-- * cartMenu: -->
+  <!-- ! CART BTN MENU -->
+  <mat-menu #cartMenu>
+    <div class="p-3 divide-y divide-solid">
+      <div class="pb-3 flex justify-between">
+        <span>2 items</span>
+        <a routerLink="/shop/cart">View Cart</a>
+      </div>
+    </div>
+  </mat-menu>
+</mat-toolbar>
+
+<!--  mx-auto border-x justify-between -->
