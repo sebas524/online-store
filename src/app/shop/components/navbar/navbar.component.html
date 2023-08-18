@@ -1,4 +1,3 @@
-<p>navbar works!</p>
 <mat-toolbar class="max-w-7*1 mx-auto border-x justify-between" color="primary">
   <a routerLink="/shop/products">The Online Shop</a>
 
@@ -13,8 +12,35 @@
   <mat-menu #cartMenu>
     <div class="p-3 divide-y divide-solid">
       <div class="pb-3 flex justify-between">
-        <span>2 items</span>
+        <span class="mr-16">2 Items</span>
         <a routerLink="/shop/cart">View Cart</a>
+      </div>
+      <div class="py-3">
+        <!-- todo: ngfor -->
+        <div class="mb-2 flex justify-between font-light">
+          Guitar x 2
+          <span class="font-bold">{{ "150" | currency }}</span>
+        </div>
+        <div class="mb-2 flex justify-between font-light">
+          Guitar x 2
+          <span class="font-bold">{{ "150" | currency }}</span>
+        </div>
+        <div class="mb-2 flex justify-between font-light">
+          Guitar x 2
+          <span class="font-bold">{{ "150" | currency }}</span>
+        </div>
+      </div>
+      <div class="font-light py-3 flex justify-between">
+        Total: <span class="font-bold">{{ "2500" | currency }}</span>
+      </div>
+      <!-- ! btn inside menu -->
+      <div class="pt-3 flex justify-between">
+        <button mat-mini-fab color="warn">
+          <mat-icon>remove_shopping_cart</mat-icon>
+        </button>
+        <button mat-mini-fab color="accent" routerLink="/shop/cart">
+          <mat-icon>shopping_cart_checkout</mat-icon>
+        </button>
       </div>
     </div>
   </mat-menu>
