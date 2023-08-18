@@ -8,11 +8,16 @@ import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ShopLayoutComponent } from './layout/shop-layout/shop-layout.component';
-import { VerticalLeftBarComponent } from './components/vertical-left-bar/vertical-left-bar.component';
 import { HorizontalUpperMiddleBarComponent } from './components/horizontal-upper-middle-bar/horizontal-upper-middle-bar.component';
 
 @NgModule({
-  declarations: [ShoppingCartComponent, ProductsComponent, NavbarComponent, ShopLayoutComponent, VerticalLeftBarComponent, HorizontalUpperMiddleBarComponent],
+  declarations: [
+    ShoppingCartComponent,
+    ProductsComponent,
+    NavbarComponent,
+    ShopLayoutComponent,
+    HorizontalUpperMiddleBarComponent,
+  ],
   imports: [CommonModule, ShopRoutingModule, MaterialModule, SharedModule],
 })
 export class ShopModule {}

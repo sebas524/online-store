@@ -1,2 +1,16 @@
-<!-- ! VERTICAL LEFT BAR -->
-<app-vertical-left-bar></app-vertical-left-bar>
+<mat-drawer-container
+  [autosize]="true"
+  class="min-h-full max-w-7xl mx-auto border-x"
+>
+  <!-- ! sidebar: -->
+  <mat-drawer class="p-10" mode="side" opened>
+    <div>filters</div>
+  </mat-drawer>
+  <mat-drawer-content class="p-3">
+    <!-- ! HORIZONTAL UPPER MIDDLE BAR -->
+    <app-horizontal-upper-middle-bar
+      (columnCount)="onColumnChange($event)"
+    ></app-horizontal-upper-middle-bar>
+    {{ colsPerRow }}
+  </mat-drawer-content>
+</mat-drawer-container>
