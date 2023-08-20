@@ -12,3 +12,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.selected {
+  background-color: #1129c4; /* You can use any styling you prefer */
+}

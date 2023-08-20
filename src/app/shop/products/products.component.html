@@ -4,13 +4,71 @@
 >
   <!-- ! sidebar: -->
   <mat-drawer class="p-10" mode="side" opened>
-    <div>filters</div>
+    <div>
+      <!-- ! CATEGORIES -->
+      <app-categories
+        (categorySelection)="onCategorySelection($event)"
+      ></app-categories>
+    </div>
   </mat-drawer>
-  <mat-drawer-content class="p-3">
+  <mat-drawer-content class="px-3 py-10">
     <!-- ! HORIZONTAL UPPER MIDDLE BAR -->
     <app-horizontal-upper-middle-bar
       (columnCount)="onColumnChange($event)"
     ></app-horizontal-upper-middle-bar>
+    selected category: {{ defaultCategory }} || rows per column:
     {{ colsPerRow }}
+    <hr />
+    <!-- ! GRID -->
+
+    <mat-grid-list
+      gutterSize="16"
+      [cols]="colsPerRow"
+      [rowHeight]="heightOfRow"
+    >
+      <!-- ! PRODUCT BOX -->
+
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [maxProductView]="colsPerRow === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [maxProductView]="colsPerRow === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [maxProductView]="colsPerRow === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [maxProductView]="colsPerRow === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [maxProductView]="colsPerRow === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [maxProductView]="colsPerRow === 1"
+        ></app-product-box>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-drawer-content>
 </mat-drawer-container>

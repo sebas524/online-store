@@ -9,6 +9,8 @@ import { MaterialModule } from '../material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ShopLayoutComponent } from './layout/shop-layout/shop-layout.component';
 import { HorizontalUpperMiddleBarComponent } from './components/horizontal-upper-middle-bar/horizontal-upper-middle-bar.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { ProductBoxComponent } from './components/product-box/product-box.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { HorizontalUpperMiddleBarComponent } from './components/horizontal-upper
     NavbarComponent,
     ShopLayoutComponent,
     HorizontalUpperMiddleBarComponent,
+    CategoriesComponent,
+    ProductBoxComponent,
   ],
   imports: [CommonModule, ShopRoutingModule, MaterialModule, SharedModule],
 })
