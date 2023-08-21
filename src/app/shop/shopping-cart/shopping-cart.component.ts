@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCart } from '../interfaces/shopping-cart.interface';
 import { Product } from '../interfaces/product.interface';
+import { Item } from '../interfaces/item.interface';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,7 +9,7 @@ import { Product } from '../interfaces/product.interface';
   styles: [],
 })
 export class ShoppingCartComponent implements OnInit {
-  dataSource: Array<Product> = [];
+  dataSource: Array<Item> = [];
   shoppingCart: ShoppingCart = {
     items: [
       {
@@ -48,7 +49,7 @@ export class ShoppingCartComponent implements OnInit {
     console.log('ds => ', this.dataSource);
   }
 
-  totalCalculator(products: Array<Product>): number {
+  totalCalculator(products: Array<Item>): number {
     return products
       .map((product) => {
         return product.price * product.quantity;

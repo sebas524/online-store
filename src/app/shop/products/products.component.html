@@ -27,44 +27,9 @@
       [rowHeight]="heightOfRow"
     >
       <!-- ! PRODUCT BOX -->
-
       <mat-grid-tile>
         <app-product-box
-          class="w-full"
-          [maxProductView]="colsPerRow === 1"
-        ></app-product-box>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <app-product-box
-          class="w-full"
-          [maxProductView]="colsPerRow === 1"
-        ></app-product-box>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <app-product-box
-          class="w-full"
-          [maxProductView]="colsPerRow === 1"
-        ></app-product-box>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <app-product-box
-          class="w-full"
-          [maxProductView]="colsPerRow === 1"
-        ></app-product-box>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <app-product-box
-          class="w-full"
-          [maxProductView]="colsPerRow === 1"
-        ></app-product-box>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <app-product-box
+          (addToShoppingCart)="onCartClick($event)"
           class="w-full"
           [maxProductView]="colsPerRow === 1"
         ></app-product-box>

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ShopService } from '../services/shop.service';
+import { Product } from '../interfaces/product.interface';
 
 const ROW_HEIGHTS: { [id: number]: number } = {
   1: 430,
@@ -12,6 +14,8 @@ const ROW_HEIGHTS: { [id: number]: number } = {
   styles: [],
 })
 export class ProductsComponent {
+  private shopService = inject(ShopService);
+
   colsPerRow: number = 3;
 
   heightOfRow: number = ROW_HEIGHTS[this.colsPerRow];
@@ -24,5 +28,15 @@ export class ProductsComponent {
 
   onCategorySelection(category: string): void {
     this.defaultCategory = category;
+  }
+
+  onCartClick(product: Product): void {
+    this.shopService.addToShoppingCart({
+      id: product.id,
+      image: product.image,
+      name: product.name,
+      price: product.price,
+      quantity: product.quantity,
+    });
   }
 }
