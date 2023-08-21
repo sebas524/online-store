@@ -1,12 +1,16 @@
 <mat-toolbar class="max-w-7*1 mx-auto border-x justify-between" color="primary">
   <a routerLink="/shop/products">The Online Shop</a>
-
-  <!-- ! CART BTN -->
-  <!-- * in order to click on cart, and that a menu pops down, the mat-icon needs to be put inside a button that will allow for that functionality (matMenuTriggerFor):  -->
-  <button mat-icon-button [matMenuTriggerFor]="cartMenu">
-    <!-- * matBadge: allows for bubble to appear next to cart -->
-    <mat-icon [matBadge]="2" matBadgeColor="warn">shopping_cart</mat-icon>
-  </button>
+  <div>
+    <button mat-icon-button routerLink="/shop/products">
+      <mat-icon>home</mat-icon>
+    </button>
+    <!-- ! CART BTN -->
+    <!-- * in order to click on cart, and that a menu pops down, the mat-icon needs to be put inside a button that will allow for that functionality (matMenuTriggerFor):  -->
+    <button mat-icon-button [matMenuTriggerFor]="cartMenu">
+      <!-- * matBadge: allows for bubble to appear next to cart -->
+      <mat-icon [matBadge]="2" matBadgeColor="warn">shopping_cart</mat-icon>
+    </button>
+  </div>
   <!-- * cartMenu: -->
   <!-- ! CART BTN MENU -->
   <mat-menu #cartMenu>
@@ -38,7 +42,7 @@
         <button mat-mini-fab color="warn">
           <mat-icon>remove_shopping_cart</mat-icon>
         </button>
-        <button mat-mini-fab color="accent" routerLink="/shop/cart">
+        <button mat-mini-fab color="primary" routerLink="/shop/cart">
           <mat-icon>shopping_cart_checkout</mat-icon>
         </button>
       </div>
