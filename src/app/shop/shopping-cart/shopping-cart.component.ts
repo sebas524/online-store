@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ShoppingCart } from '../interfaces/shopping-cart.interface';
 import { Product } from '../interfaces/product.interface';
 import { Item } from '../interfaces/item.interface';
+import { ShopService } from '../services/shop.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -9,6 +10,7 @@ import { Item } from '../interfaces/item.interface';
   styles: [],
 })
 export class ShoppingCartComponent implements OnInit {
+  private shopService = inject(ShopService);
   dataSource: Array<Item> = [];
   shoppingCart: ShoppingCart = {
     items: [
@@ -45,17 +47,29 @@ export class ShoppingCartComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.dataSource = this.shoppingCart.items;
-    console.log('ds => ', this.dataSource);
+    this.shopService.shoppingCart.subscribe((_shoppingCart: ShoppingCart) => {
+      this.shoppingCart = _shoppingCart;
+      this.dataSource = this.shoppingCart.items;
+      console.log('ds => ', this.dataSource);
+    });
   }
 
   totalCalculator(products: Array<Item>): number {
-    return products
-      .map((product) => {
-        return product.price * product.quantity;
-      })
-      .reduce((prev, curr) => {
-        return prev + curr;
-      }, 0);
+    return this.shopService.totalCalculator(products);
+  }
+  emptyShoppingCart(): void {
+    this.shopService.emptyShoppingCart();
+  }
+
+  removeItem(item: Item): void {
+    this.shopService.removeItem(item);
+  }
+
+  addQuantity(item: Item): void {
+    // * this method has been already created in service. remeber it actually checks to see if item already exists and if so then just increases the quantity. else, it just adds the new item.
+    this.shopService.addToShoppingCart(item);
+  }
+  subtractQuantity(item: Item): void {
+    this.shopService.substractQuantity(item);
   }
 }

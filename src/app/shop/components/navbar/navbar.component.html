@@ -8,7 +8,12 @@
     <!-- * in order to click on cart, and that a menu pops down, the mat-icon needs to be put inside a button that will allow for that functionality (matMenuTriggerFor):  -->
     <button mat-icon-button [matMenuTriggerFor]="cartMenu">
       <!-- * matBadge: allows for bubble to appear next to cart -->
-      <mat-icon [matBadge]="2" matBadgeColor="warn">shopping_cart</mat-icon>
+      <mat-icon
+        [matBadge]="numberOfItems"
+        matBadgeColor="warn"
+        [matBadgeHidden]="!numberOfItems"
+        >shopping_cart</mat-icon
+      >
     </button>
   </div>
   <!-- * cartMenu: -->
@@ -16,30 +21,27 @@
   <mat-menu #cartMenu>
     <div class="p-3 divide-y divide-solid">
       <div class="pb-3 flex justify-between">
-        <span class="mr-16">2 Items</span>
+        <span class="mr-16">{{ numberOfItems }} Items</span>
         <a routerLink="/shop/cart">View Cart</a>
       </div>
-      <div class="py-3">
-        <!-- todo: ngfor -->
-        <div class="mb-2 flex justify-between font-light">
-          Guitar x 2
-          <span class="font-bold">{{ "150" | currency }}</span>
-        </div>
-        <div class="mb-2 flex justify-between font-light">
-          Guitar x 2
-          <span class="font-bold">{{ "150" | currency }}</span>
-        </div>
-        <div class="mb-2 flex justify-between font-light">
-          Guitar x 2
-          <span class="font-bold">{{ "150" | currency }}</span>
+      <div *ngIf="shoppingCart.items.length" class="py-3">
+        <div
+          *ngFor="let item of shoppingCart.items"
+          class="mb-2 flex justify-between font-light"
+        >
+          {{ item.name }} x {{ item.quantity }}
+          <span class="font-bold">{{ item.price | currency }}</span>
         </div>
       </div>
-      <div class="font-light py-3 flex justify-between">
-        Total: <span class="font-bold">{{ "2500" | currency }}</span>
+      <div *ngIf="numberOfItems" class="font-light py-3 flex justify-between">
+        Total:
+        <span class="font-bold">{{
+          totalCalculator(shoppingCart.items) | currency
+        }}</span>
       </div>
       <!-- ! btn inside menu -->
       <div class="pt-3 flex justify-between">
-        <button mat-mini-fab color="warn">
+        <button mat-mini-fab color="warn" (click)="emptyShoppingCart()">
           <mat-icon>remove_shopping_cart</mat-icon>
         </button>
         <button mat-mini-fab color="primary" routerLink="/shop/cart">
