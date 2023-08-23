@@ -50,25 +50,6 @@ export class ShopService {
     });
   }
 
-  // substractQuantity(item: Item): void {
-  //   const refreshedSetOfItems = this.shoppingCart.value.items.map(
-  //     (_item: Item) => {
-  //       if (_item.quantity === 1) {
-  //         this.removeItem(item);
-  //       }
-  //       if (_item.id === item.id) {
-  //         _item.quantity--;
-  //       }
-  //     }
-  //   );
-
-  //   this.shoppingCart.next({ items: refreshedSetOfItems });
-
-  //   this.snackBar.open('1 item has been removed!', 'Got it!', {
-  //     duration: 3000,
-  //   });
-  // }
-
   substractQuantity(item: Item): void {
     const refreshedSetOfItems = this.shoppingCart.value.items.map(
       (_item: Item) => {

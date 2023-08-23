@@ -14,6 +14,8 @@
   <mat-drawer-content class="px-3 py-10">
     <!-- ! HORIZONTAL UPPER MIDDLE BAR -->
     <app-horizontal-upper-middle-bar
+      (changeLimit)="onChangeLimit($event)"
+      (changeSort)="onChangeSort($event)"
       (columnCount)="onColumnChange($event)"
     ></app-horizontal-upper-middle-bar>
     selected category: {{ defaultCategory }} || rows per column:
@@ -27,8 +29,9 @@
       [rowHeight]="heightOfRow"
     >
       <!-- ! PRODUCT BOX -->
-      <mat-grid-tile>
+      <mat-grid-tile *ngFor="let product of fetchedProducts">
         <app-product-box
+          [product]="product"
           (addToShoppingCart)="onCartClick($event)"
           class="w-full"
           [maxProductView]="colsPerRow === 1"

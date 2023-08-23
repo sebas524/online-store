@@ -1,24 +1,27 @@
-<mat-card class="p-3" [ngClass]="{ 'text-center': !maxProductView }">
+<mat-card
+  *ngIf="product"
+  class="p-3"
+  [ngClass]="{ 'text-center': !maxProductView }"
+>
   <div [ngClass]="{ flex: maxProductView }">
     <img
       class="mx-auto mb-1"
       [ngClass]="!maxProductView ? 'h-[200px]' : 'h-[360px]'"
-      src="http://via.placeholder.com/150"
+      [src]="product.image"
     />
     <div
       class="w-full"
       [ngClass]="{ 'px-8 flex flex-col justify-between ': maxProductView }"
     >
       <div>
-        <h5>Shoes</h5>
-        <p class="truncate hover:whitespace-normal">snickers</p>
+        <h5>{{ product.category }}</h5>
+        <p class="truncate hover:whitespace-normal">{{ product.title }}</p>
         <p *ngIf="maxProductView">
-          Et culpa cupidatat eiusmod veniam eiusmod occaecat do reprehenderit
-          elit nisi ad mollit aliqua nulla.
+          {{ product.description }}
         </p>
       </div>
       <div class="flex justify-between">
-        <span class="text-red-500">{{ "150" | currency }}</span>
+        <span class="text-red-500">{{ product.price | currency }}</span>
         <button (click)="onCartClick()">
           <mat-icon class="text-gray-600"> shopping_cart </mat-icon>
         </button>

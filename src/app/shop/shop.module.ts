@@ -11,6 +11,7 @@ import { ShopLayoutComponent } from './layout/shop-layout/shop-layout.component'
 import { HorizontalUpperMiddleBarComponent } from './components/horizontal-upper-middle-bar/horizontal-upper-middle-bar.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { ProductBoxComponent } from './components/product-box/product-box.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,12 @@ import { ProductBoxComponent } from './components/product-box/product-box.compon
     CategoriesComponent,
     ProductBoxComponent,
   ],
-  imports: [CommonModule, ShopRoutingModule, MaterialModule, SharedModule],
+  imports: [
+    CommonModule,
+    ShopRoutingModule,
+    MaterialModule,
+    SharedModule,
+    HttpClientModule,
+  ],
 })
 export class ShopModule {}
