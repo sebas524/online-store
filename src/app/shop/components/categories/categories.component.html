@@ -1,16 +1,3 @@
-<!-- <mat-expansion-panel *ngIf="categories">
-  <mat-expansion-panel-header>
-    <mat-panel-title> CATEGORIES </mat-panel-title>
-  </mat-expansion-panel-header>
-  <mat-selection-list [multiple]="false">
-    <mat-list-item
-      *ngFor="let category of categories"
-      (click)="onCategorySelection(category)"
-    >
-      {{ category }}
-    </mat-list-item>
-  </mat-selection-list>
-</mat-expansion-panel> -->
 <h2>Available Products</h2>
 <hr />
 <mat-expansion-panel *ngIf="categories">
@@ -22,7 +9,7 @@
       *ngFor="let category of categories"
       (click)="onCategorySelection(category)"
     >
-      {{ category }}
+      {{ category | titlecase }}
     </mat-list-option>
   </mat-selection-list>
 </mat-expansion-panel>

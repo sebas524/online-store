@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { ShopService } from '../services/shop.service';
-import { Product } from '../interfaces/product.interface';
+import { ShopService } from '../../services/shop.service';
+import { Product } from '../../interfaces/product.interface';
 import { Subscription } from 'rxjs';
-import { ShopApiService } from '../services/shop-api.service';
+import { ShopApiService } from '../../services/shop-api.service';
 
 const ROW_HEIGHTS: { [id: number]: number } = {
   1: 430,
@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   private shopApiService = inject(ShopApiService);
   colsPerRow: number = 3;
   heightOfRow: number = ROW_HEIGHTS[this.colsPerRow];
-  defaultCategory: string | undefined;
+  chosenCategory: string | undefined;
   sort: string = 'desc';
   limit: string = '15';
   fetchedProducts: Array<Product> | undefined;
@@ -40,7 +40,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   getAllProducts(): void {
     // * set productsSubs to this down here:
     this.productsSubs = this.shopApiService
-      .getAllProducts(this.limit, this.sort)
+      .getAllProducts(this.limit, this.sort, this.chosenCategory)
       .subscribe((res) => {
         this.fetchedProducts = res;
         console.log('fetchedProducts => ', res);
@@ -53,7 +53,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   onCategorySelection(category: string): void {
-    this.defaultCategory = category;
+    this.chosenCategory = category;
+    this.getAllProducts();
   }
 
   onCartClick(product: Product): void {

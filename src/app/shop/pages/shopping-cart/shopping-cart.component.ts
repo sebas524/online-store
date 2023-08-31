@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ShoppingCart } from '../interfaces/shopping-cart.interface';
-import { Product } from '../interfaces/product.interface';
-import { Item } from '../interfaces/item.interface';
-import { ShopService } from '../services/shop.service';
+import { ShoppingCart } from '../../interfaces/shopping-cart.interface';
+import { Product } from '../../interfaces/product.interface';
+import { Item } from '../../interfaces/item.interface';
+import { ShopService } from '../../services/shop.service';
 
 @Component({
   selector: 'app-shopping-cart',
